@@ -1,0 +1,39 @@
+{
+    "headers": {
+        "accept": "application/json",
+        "header": ""
+    },
+    "responseStatusCode": "200",
+    "responseValue": {
+        "code": 200,
+        "type": "unknown",
+        "message": "uploaded succsfully"
+    },
+    "responseSchema": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer",
+                "format": "int32"
+            },
+            "type": {
+                "type": "string"
+            },
+            "message": {
+                "type": "string"
+            }
+        }
+    },
+    "pathParam": {
+        "undefined": ""
+    },
+    "queryParam": {
+        "undefined": ""
+    },
+    "cookie": {
+        "undefined": ""
+    },
+    "header": {
+        "undefined": ""
+    }
+}
