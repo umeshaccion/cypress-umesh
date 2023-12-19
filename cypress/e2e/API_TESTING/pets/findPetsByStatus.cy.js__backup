@@ -2,14 +2,13 @@ import Ajv from 'ajv';
 const ajv = new Ajv();
 const apiBaseURL = Cypress.env('CYPRESS_BASE_URL');
 let requestInfo = JSON.parse(
-    JSON.stringify({ url: '/pet/{petId}/uploadImage', method: 'POST' })
+    JSON.stringify({ url: '/pet/findByStatus', method: 'GET' })
 );
 requestInfo.url = apiBaseURL + requestInfo.url;
 
-describe('uploads an image', () => {
-    // Please be informed that the API in this file has been deprecated and will no longer be supported.
-    it.skip('/pet/{petId}/uploadImage', () => {
-        cy.fixture('200_application_json__pet_petId_uploadImage').then(
+describe('Finds Pets by status', () => {
+    it('Multiple status values can be provided with comma separated strings', () => {
+        cy.fixture('200_application_json__findPetsByStatus').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload
                     ? fixtureResponse.payload
@@ -17,24 +16,11 @@ describe('uploads an image', () => {
                 requestInfo.headers = fixtureResponse.headers
                     ? fixtureResponse.headers
                     : '';
-                let pathParams = fixtureResponse.pathParam
-                    ? fixtureResponse.pathParam
-                    : '';
-                for (const key in pathParams) {
-                    if (pathParams.hasOwnProperty(key)) {
-                        const placeholder = '{' + key + '}';
-                        requestInfo.url = requestInfo.url.replace(
-                            new RegExp(placeholder, 'g'),
-                            pathParams[key]
-                        );
-                    }
-                }
+
                 requestInfo.qs = fixtureResponse.queryParam
                     ? fixtureResponse.queryParam
                     : '';
-                requestInfo.cookies = fixtureResponse.cookie
-                    ? fixtureResponse.cookie
-                    : '';
+
                 cy.request(requestInfo).then((response) => {
                     expect(response.status).to.eq(
                         parseInt(fixtureResponse.responseStatusCode)
