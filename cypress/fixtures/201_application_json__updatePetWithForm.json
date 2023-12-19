@@ -1,0 +1,16 @@
+{
+    "headers": {
+        "accept": "application/json",
+        "header": ""
+    },
+    "responseStatusCode": "201",
+    "responseValue": {
+        "code": 201,
+        "type": "unknown",
+        "message": "updated succesfully"
+    },
+    "responseSchema": "",
+    "pathParam": {
+        "undefined": ""
+    }
+}
