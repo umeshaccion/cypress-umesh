@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "accept": "applciation/json"
+    },
+    "responseStatusCode": "200",
+    "responseValue": {
+        "code": 200,
+        "type": "unknown",
+        "message": "ok"
+    },
+    "responseSchema": ""
+}
