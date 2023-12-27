@@ -8,7 +8,7 @@ requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Finds Pets by status', () => {
     it('Multiple status values can be provided with comma separated strings', () => {
-        cy.fixture('400_application_json__findPetsByStatus').then(
+        cy.fixture('200_application_json__findPetsByStatus').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload
                     ? fixtureResponse.payload
