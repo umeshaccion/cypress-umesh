@@ -7,7 +7,8 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('uploads an image', () => {
-    it('/pet/{petId}/uploadImage', () => {
+    // Please be informed that the API in this file has been deprecated and will no longer be supported.
+    it.skip('/pet/{petId}/uploadImage', () => {
         cy.fixture(
             '200_application_json_multipart_form-data_pet_petId_uploadImage'
         ).then((fixtureResponse) => {
