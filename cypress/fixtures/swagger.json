@@ -132,78 +132,11 @@
                     {
                         "petstore_auth": ["write:pets", "read:pets"]
                     }
-                ]
+                ],
+                "deprecated": true
             }
         },
         "/pet": {
-            "put": {
-                "tags": ["pets"],
-                "summary": "Update an existing pet",
-                "operationId": "updatePet",
-                "requestBody": {
-                    "description": "Pet object that needs to be added to the store",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Pet"
-                            },
-                            "examples": {
-                                "200": {
-                                    "summary": "positive",
-                                    "value": {
-                                        "id": 1234,
-                                        "catrgory": {
-                                            "id": 1,
-                                            "name": "BullDog"
-                                        },
-                                        "name": "Bruno",
-                                        "photoUrls": [
-                                            "https://germanshepard/burno.jpg"
-                                        ],
-                                        "tags": [
-                                            {
-                                                "id": 1,
-                                                "name": "Tommy"
-                                            }
-                                        ],
-                                        "status": "available"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Invalid ID supplied",
-                        "content": {
-                            "application/json": {
-                                "example": {
-                                    "id": 1,
-                                    "name": "Bruno",
-                                    "photoUrls": [
-                                        "https://germanshepard/burno.jpg"
-                                    ],
-                                    "tags": [
-                                        {
-                                            "id": 1,
-                                            "name": "Tommy"
-                                        }
-                                    ],
-                                    "status": "available"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": ["write:pets", "read:pets"]
-                    }
-                ],
-                "x-codegen-request-body-name": "body"
-            },
             "post": {
                 "tags": ["pets"],
                 "summary": "Add a new pet to the store",
@@ -329,33 +262,15 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "400": {
                         "description": "successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/Pet"
+                                        "$ref": "#/components/schemas/ApiResponse"
                                     }
-                                },
-                                "example": {
-                                    "id": 1,
-                                    "catrgory": {
-                                        "id": 1,
-                                        "name": "German shepard"
-                                    },
-                                    "name": "Bruno",
-                                    "photoUrls": [
-                                        "https://germanshepard/burno.jpg"
-                                    ],
-                                    "tags": [
-                                        {
-                                            "id": 1,
-                                            "name": "Tommy"
-                                        }
-                                    ],
-                                    "status": "available"
                                 }
                             }
                         }
@@ -535,6 +450,65 @@
                 },
                 "responses": {
                     "201": {
+                        "description": "Invalid input",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "code": 201,
+                                    "type": "unknown",
+                                    "message": "updated succesfully"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": ["write:pets", "read:pets"]
+                    }
+                ]
+            },
+            "put": {
+                "tags": ["pets"],
+                "summary": "update a pet",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "petId",
+                        "in": "path",
+                        "description": "ID of pet that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Updated name of the pet"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "description": "Updated status of the pet"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "Bruno",
+                                "status": "sold"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
                         "description": "Invalid input",
                         "content": {
                             "application/json": {
