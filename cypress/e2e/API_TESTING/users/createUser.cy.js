@@ -5,7 +5,7 @@ let requestInfo = JSON.parse(JSON.stringify({ url: '/user', method: 'POST' }));
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Create user', () => {
-    it('This can only be done by the logged in user.', () => {
+    it('successful operation', () => {
         cy.fixture('200_applciation_json_application_json_createUser').then(
             (fixtureResponse) => {
                 requestInfo.headers = fixtureResponse.headers

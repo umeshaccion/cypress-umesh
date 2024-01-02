@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Updates a pet in the store with form data', () => {
-    it('/pet/{petId}', () => {
+    it('Invalid input', () => {
         cy.fixture(
             '201_application_json_application_json_updatePetWithForm'
         ).then((fixtureResponse) => {

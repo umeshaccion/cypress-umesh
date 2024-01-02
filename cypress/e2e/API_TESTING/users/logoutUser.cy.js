@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Logs out current logged in user session', () => {
-    it('/user/logout', () => {
+    it('successful operation', () => {
         cy.fixture('200__logoutUser').then((fixtureResponse) => {
             requestInfo.headers = fixtureResponse.headers
                 ? fixtureResponse.headers

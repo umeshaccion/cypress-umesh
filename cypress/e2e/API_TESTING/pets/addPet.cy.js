@@ -5,7 +5,7 @@ let requestInfo = JSON.parse(JSON.stringify({ url: '/pet', method: 'POST' }));
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Add a new pet to the store', () => {
-    it('/pet', () => {
+    it('Invalid input', () => {
         cy.fixture('200_application_json_application_json_addPet').then(
             (fixtureResponse) => {
                 requestInfo.headers = fixtureResponse.headers
@@ -33,7 +33,7 @@ describe('Add a new pet to the store', () => {
         );
     });
 
-    it('/pet', () => {
+    it('Invalid input', () => {
         cy.fixture('200_application_xml_application_json_addPet').then(
             (fixtureResponse) => {
                 requestInfo.headers = fixtureResponse.headers
@@ -61,7 +61,7 @@ describe('Add a new pet to the store', () => {
         );
     });
 
-    it('/pet', () => {
+    it('s', () => {
         cy.fixture('400__application_json_addPet').then((fixtureResponse) => {
             requestInfo.headers = fixtureResponse.headers
                 ? fixtureResponse.headers

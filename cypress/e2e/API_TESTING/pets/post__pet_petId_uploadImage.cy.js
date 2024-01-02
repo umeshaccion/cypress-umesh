@@ -2,17 +2,22 @@ import Ajv from 'ajv';
 const ajv = new Ajv();
 const apiBaseURL = Cypress.env('CYPRESS_BASE_URL');
 let requestInfo = JSON.parse(
-    JSON.stringify({ url: '/user/{username}', method: 'GET' })
+    JSON.stringify({ url: '/pet/{petId}/uploadImage', method: 'POST' })
 );
 requestInfo.url = apiBaseURL + requestInfo.url;
 
-describe('Get user by user name', () => {
+describe('uploads an image', () => {
     it('successful operation', () => {
-        cy.fixture('200_application_json__getUserByName').then(
-            (fixtureResponse) => {
-                requestInfo.body = fixtureResponse.payload
-                    ? fixtureResponse.payload
-                    : '';
+        cy.fixture(
+            '200_application_json_multipart_form-data_post__pet_petId_uploadImage'
+        ).then((fixtureResponse) => {
+            cy.fixture('**filePath**').then((fileContent) => {
+                const blob = new Blob([fileContent], {
+                    type: requestInfo.headers['Content-Type'],
+                });
+                const formData = new FormData();
+                formData.append('file', blob);
+                requestInfo.body = formData;
                 requestInfo.headers = fixtureResponse.headers
                     ? fixtureResponse.headers
                     : '';
@@ -28,7 +33,12 @@ describe('Get user by user name', () => {
                         );
                     }
                 }
-
+                requestInfo.qs = fixtureResponse.queryParam
+                    ? fixtureResponse.queryParam
+                    : '';
+                requestInfo.cookies = fixtureResponse.cookie
+                    ? fixtureResponse.cookie
+                    : '';
                 cy.request(requestInfo).then((response) => {
                     expect(response.status).to.eq(
                         parseInt(fixtureResponse.responseStatusCode)
@@ -44,7 +54,7 @@ describe('Get user by user name', () => {
                         expect(isValid).to.be.true;
                     }
                 });
-            }
-        );
+            });
+        });
     });
 });

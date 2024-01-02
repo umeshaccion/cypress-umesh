@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Logs user into the system', () => {
-    it('/user/login', () => {
+    it('successful operation', () => {
         cy.fixture('200_application_json__loginUser').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload

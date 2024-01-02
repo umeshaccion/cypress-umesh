@@ -1,7 +1,9 @@
 {
     "headers": {
         "accept": "application/json",
-        "header": "special-key"
+        "header": {
+            "api_key": "special-key"
+        }
     },
     "responseStatusCode": "200",
     "responseValue": {

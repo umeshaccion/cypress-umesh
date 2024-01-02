@@ -5,7 +5,7 @@ let requestInfo = JSON.parse(JSON.stringify({ url: '/pet', method: 'PUT' }));
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Update an existing pet', () => {
-    it('/pet', () => {
+    it('Invalid ID supplied', () => {
         cy.fixture('200_application_json_application_json_updatePet').then(
             (fixtureResponse) => {
                 requestInfo.headers = fixtureResponse.headers

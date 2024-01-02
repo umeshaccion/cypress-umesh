@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Delete user', () => {
-    it('This can only be done by the logged in user.', () => {
+    it('Invalid username supplied', () => {
         cy.fixture('400___deleteUser').then((fixtureResponse) => {
             requestInfo.body = fixtureResponse.payload
                 ? fixtureResponse.payload
@@ -45,7 +45,7 @@ describe('Delete user', () => {
             });
         });
     });
-    it('This can only be done by the logged in user.', () => {
+    it('User not found', () => {
         cy.fixture('404___deleteUser').then((fixtureResponse) => {
             requestInfo.body = fixtureResponse.payload
                 ? fixtureResponse.payload

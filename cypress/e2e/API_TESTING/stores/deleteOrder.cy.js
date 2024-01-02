@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Delete purchase order by ID', () => {
-    it('For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors', () => {
+    it('succesful operation', () => {
         cy.fixture('200_application_json__deleteOrder').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload

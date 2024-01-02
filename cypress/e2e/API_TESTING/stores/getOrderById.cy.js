@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Find purchase order by ID', () => {
-    it('For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions', () => {
+    it('successful operation', () => {
         cy.fixture('200_application_json__getOrderById').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload

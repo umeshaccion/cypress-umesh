@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Updated user', () => {
-    it('This can only be done by the logged in user.', () => {
+    it('successful operation', () => {
         cy.fixture('200_application_json_application_json_updateUser').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload

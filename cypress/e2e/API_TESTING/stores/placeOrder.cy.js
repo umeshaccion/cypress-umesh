@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Place an order for a pet', () => {
-    it('/store/order', () => {
+    it('successful operation', () => {
         cy.fixture('200_application_json_application_json_placeOrder').then(
             (fixtureResponse) => {
                 requestInfo.headers = fixtureResponse.headers

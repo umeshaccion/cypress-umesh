@@ -1,7 +1,7 @@
 {
     "headers": {
         "accept": "application/xml",
-        "header": ""
+        "header": {}
     },
     "responseStatusCode": "200",
     "responseSchema": {

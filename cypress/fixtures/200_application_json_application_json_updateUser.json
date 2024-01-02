@@ -2,7 +2,7 @@
     "headers": {
         "Content-Type": "application/json",
         "accept": "application/json",
-        "header": ""
+        "header": {}
     },
     "payload": {
         "id": 1,

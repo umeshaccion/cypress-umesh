@@ -7,7 +7,7 @@ let requestInfo = JSON.parse(
 requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Deletes a pet', () => {
-    it('/pet/{petId}', () => {
+    it('Invalid ID supplied', () => {
         cy.fixture('200_application_json__deletePet').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload

@@ -1,7 +1,7 @@
 {
     "headers": {
         "accept": "application/json",
-        "header": ""
+        "header": {}
     },
     "responseStatusCode": "200",
     "responseValue": {

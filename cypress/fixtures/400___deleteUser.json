@@ -1,6 +1,6 @@
 {
     "headers": {
-        "header": ""
+        "header": {}
     },
     "responseStatusCode": "400",
     "responseSchema": "",

@@ -8,7 +8,7 @@ requestInfo.url = apiBaseURL + requestInfo.url;
 
 describe('Finds Pets by tags', () => {
     // Please be informed that the API in this file has been deprecated and will no longer be supported.
-    it.skip('Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.', () => {
+    it.skip('successful operation', () => {
         cy.fixture('200_application_json__findPetsByTags').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload
@@ -40,7 +40,7 @@ describe('Finds Pets by tags', () => {
             }
         );
     });
-    it.skip('Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.', () => {
+    it.skip('successful operation', () => {
         cy.fixture('200_application_xml__findPetsByTags').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload
