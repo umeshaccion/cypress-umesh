@@ -1,0 +1,25 @@
+{
+  "headers": {
+    "accept": "application/xml",
+    "header": {}
+  },
+  "responseStatusCode": "400",
+  "responseSchema": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "type": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  },
+  "queryParam": {
+    "status": "available"
+  }
+}
