@@ -2,22 +2,17 @@ import Ajv from 'ajv';
 const ajv = new Ajv();
 const apiBaseURL = Cypress.env('CYPRESS_BASE_URL');
 let requestInfo = JSON.parse(
-    JSON.stringify({ url: '/pet/{petId}/uploadImage', method: 'POST' })
+    JSON.stringify({ url: '/pet/{petId}', method: 'PUT' })
 );
 requestInfo.url = apiBaseURL + requestInfo.url;
 
-describe('uploads an image', () => {
-    it('successful operation', () => {
-        cy.fixture(
-            '200_application_json_multipart_form-data_post__pet_petId_uploadImage'
-        ).then((fixtureResponse) => {
-            cy.fixture('**filePath**').then((fileContent) => {
-                const blob = new Blob([fileContent], {
-                    type: requestInfo.headers['Content-Type'],
-                });
-                const formData = new FormData();
-                formData.append('file', blob);
-                requestInfo.body = formData;
+describe('update a pet', () => {
+    it('Invalid input', () => {
+        cy.fixture('200_application_json_application_json_update').then(
+            (fixtureResponse) => {
+                requestInfo.body = fixtureResponse.payload
+                    ? fixtureResponse.payload
+                    : '';
                 requestInfo.headers = fixtureResponse.headers
                     ? fixtureResponse.headers
                     : '';
@@ -33,12 +28,7 @@ describe('uploads an image', () => {
                         );
                     }
                 }
-                requestInfo.qs = fixtureResponse.queryParam
-                    ? fixtureResponse.queryParam
-                    : '';
-                requestInfo.cookies = fixtureResponse.cookie
-                    ? fixtureResponse.cookie
-                    : '';
+
                 cy.request(requestInfo).then((response) => {
                     expect(response.status).to.eq(
                         parseInt(fixtureResponse.responseStatusCode)
@@ -54,7 +44,7 @@ describe('uploads an image', () => {
                         expect(isValid).to.be.true;
                     }
                 });
-            });
-        });
+            }
+        );
     });
 });

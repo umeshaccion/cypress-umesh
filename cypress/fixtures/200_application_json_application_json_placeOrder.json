@@ -42,7 +42,7 @@
             "status": {
                 "type": "string",
                 "description": "Order Status",
-                "enum": ["placed", "approved", "delivered"]
+                "enum": ["approved", "delivered"]
             },
             "complete": {
                 "type": "boolean"
