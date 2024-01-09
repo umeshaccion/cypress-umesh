@@ -2,13 +2,13 @@ import Ajv from 'ajv';
 const ajv = new Ajv();
 const apiBaseURL = Cypress.env('CYPRESS_BASE_URL');
 const requestInfo = JSON.parse(
-    JSON.stringify({ url: '/pet/findByStatus', method: 'GET' })
+    JSON.stringify({ url: '/pet/{petId}', method: 'PUT' })
 );
 requestInfo.url = apiBaseURL + requestInfo.url;
 
-describe('Finds Pets by status', () => {
-    it('successful operation', () => {
-        cy.fixture('400_application_json__findPetsByStatus').then(
+describe('update a pet', () => {
+    it('Invalid input', () => {
+        cy.fixture('200_application_json_application_json_update').then(
             (fixtureResponse) => {
                 requestInfo.body = fixtureResponse.payload
                     ? fixtureResponse.payload
@@ -16,10 +16,18 @@ describe('Finds Pets by status', () => {
                 requestInfo.headers = fixtureResponse.headers
                     ? fixtureResponse.headers
                     : '';
-
-                requestInfo.qs = fixtureResponse.queryParam
-                    ? fixtureResponse.queryParam
+                let pathParams = fixtureResponse.pathParam
+                    ? fixtureResponse.pathParam
                     : '';
+                for (const key in pathParams) {
+                    if (pathParams.hasOwnProperty(key)) {
+                        const placeholder = '{' + key + '}';
+                        requestInfo.url = requestInfo.url.replace(
+                            new RegExp(placeholder, 'g'),
+                            pathParams[key]
+                        );
+                    }
+                }
 
                 cy.request(requestInfo).then((response) => {
                     expect(response.status).to.eq(
