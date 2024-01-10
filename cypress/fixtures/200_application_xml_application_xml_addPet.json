@@ -1,0 +1,23 @@
+{
+    "headers": {
+        "Content-Type": "application/xml",
+        "accept": "application/xml"
+    },
+    "payload": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><root/>",
+    "responseStatusCode": "200",
+    "responseSchema": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer",
+                "format": "int32"
+            },
+            "type": {
+                "type": "string"
+            },
+            "message": {
+                "type": "string"
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "payload": {},
+    "responseStatusCode": "404",
+    "responseSchema": ""
+}
