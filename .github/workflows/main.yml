@@ -8,14 +8,16 @@ on:
     - main
 
 jobs:
-  
+  cypress-Automation-Tests:
     runs-on: ubuntu-latest
-      steps:
-        - run: |
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+      - run: |
             echo The PR was merged
 
-        - name: Run generated Cypress Automation scripts
-          run: |
+      - name: Run generated Cypress Automation scripts
+        run: |
             pwd
             ls
             # Ensure the directory exists before navigating to it
@@ -23,23 +25,23 @@ jobs:
             ls -lrta /tmp/cypress-umesh
             npm run test
 
-        - name: Generate report for cypress-
-          if: ${{ ! cancelled() }}
-          run: |
+      - name: Generate report for cypress-
+        if: ${{ ! cancelled() }}
+        run: |
             cd /tmp/cypress-umesh
             npm run generate-merge-report
 
-        - name: Install aws-cli
-          id: install-aws
-          if: ${{ ! cancelled() }}
-          run: |
+      - name: Install aws-cli
+        id: install-aws
+        if: ${{ ! cancelled() }}
+        run: |
              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
              unzip awscliv2.zip
             sudo ./aws/install --update
 
-        - name: Upload cypress report folder to S3
-          if: always()
-          run: |
+      - name: Upload cypress report folder to S3
+        if: always()
+        run: |
             pwd
             ls -l /tmp/cypress-umesh/mochawesome-report
             timestamp=$(date +"%Y-%m-%d-%H-%M-%S")
