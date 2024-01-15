@@ -10,9 +10,9 @@ export default defineConfig({
             });
         },
         specPattern: [
-            "cypress/e2e/API_TESTING/pets/updatePet.cy.js",
-            "cypress/e2e/API_TESTING/users/logoutUser.cy.js",
-            "cypress/e2e/API_TESTING/users/updateUser.cy.js,",
+            'cypress/e2e/API_TESTING/pets/updatePet.cy.js',
+            'cypress/e2e/API_TESTING/users/logoutUser.cy.js',
+            'cypress/e2e/API_TESTING/users/updateUser.cy.js,',
         ],
         supportFile: false,
         screenshotOnRunFailure: false,
