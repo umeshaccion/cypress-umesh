@@ -20,15 +20,11 @@ jobs:
         run: |
           pwd
           ls
-          # Ensure the directory exists before navigating to it
-          test -d /tmp/cypress-umesh && cd /tmp/cypress-umesh || echo "/tmp/cypress-umesh directory does not exist"
-          ls -lrta /tmp/cypress-umesh
           npm run test
 
       - name: Generate report for cypress-
         if: ${{ ! cancelled() }}
         run: |
-          cd /tmp/cypress-umesh
           npm run generate-merge-report
 
       - name: Install aws-cli
@@ -43,9 +39,9 @@ jobs:
         if: always()
         run: |
           pwd
-          ls -l /tmp/cypress-umesh/mochawesome-report
+          ls -l /home/runner/work/cypress-umesh/cypress-umesh/mochawesome-report
           timestamp=$(date +"%Y-%m-%d-%H-%M-%S")
-          aws s3 cp --recursive /tmp/cypress-umesh/mochawesome-report s3://testbucket-for-triggering/reports/${timestamp}/
+          aws s3 cp --recursive /home/runner/work/cypress-umesh/cypress-umesh/mochawesome-report s3://testbucket-for-triggering/reports/${timestamp}/
           env:
             AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
             AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
