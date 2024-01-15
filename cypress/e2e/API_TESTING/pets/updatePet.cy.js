@@ -1,26 +1,19 @@
 import Ajv from 'ajv';
 const ajv = new Ajv();
 const apiBaseURL = Cypress.env('CYPRESS_BASE_URL');
-const requestInfo = JSON.parse(
-    JSON.stringify({ url: '/pet/findByStatus', method: 'GET' })
-);
+const requestInfo = JSON.parse(JSON.stringify({ url: '/pet', method: 'PUT' }));
 requestInfo.url = apiBaseURL + requestInfo.url;
 
-describe('Finds Pets by status', () => {
-    it('successful operation', () => {
-        cy.fixture('200_application_json__findPetsByStatus').then(
+describe('Update an existing pet', () => {
+    it('Invalid ID supplied', () => {
+        cy.fixture('200_application_json_application_json_updatePet').then(
             (fixtureResponse) => {
-                requestInfo.body = fixtureResponse.payload
-                    ? fixtureResponse.payload
-                    : '';
                 requestInfo.headers = fixtureResponse.headers
                     ? fixtureResponse.headers
                     : '';
-
-                requestInfo.qs = fixtureResponse.queryParam
-                    ? fixtureResponse.queryParam
+                requestInfo.body = fixtureResponse.payload
+                    ? fixtureResponse.payload
                     : '';
-
                 cy.request(requestInfo).then((response) => {
                     expect(response.status).to.eq(
                         parseInt(fixtureResponse.responseStatusCode)
