@@ -1,7 +1,9 @@
+name: Run automation scripts 
+
 on:
-    push:
-       branches:
-            main:
+  push:
+    branches:
+      - main
 
 jobs:
     if_merged:
