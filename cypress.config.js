@@ -9,16 +9,11 @@ export default defineConfig({
                 },
             });
         },
-        specPattern: [
-            'cypress/e2e/API_TESTING/pets/updatePet.cy.js',
-            'cypress/e2e/API_TESTING/users/logoutUser.cy.js',
-            'cypress/e2e/API_TESTING/users/updateUser.cy.js,',
-        ],
+        specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx,features}',
         supportFile: false,
         screenshotOnRunFailure: false,
         env: {
-            CYPRESS_BASE_URL: 'https://petstore.swagger.io/v2',
-            fileuploadContentTypes: 'PLACEHOLDER_CONTENT_TYPES',
+            CYPRESS_BASE_URL: 'https://postman-echo.com',
         },
     },
 });
