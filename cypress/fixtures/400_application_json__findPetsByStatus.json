@@ -1,0 +1,27 @@
+{
+    "headers": {
+        "accept": "application/json"
+    },
+    "responseStatusCode": "400",
+    "responseSchema": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "queryParam": {
+        "status": "available"
+    }
+}
