@@ -1,8 +1,0 @@
-{
-    "headers": {
-        "Content-Type": "application/json"
-    },
-    "payload": {},
-    "responseStatusCode": "201",
-    "responseSchema": ""
-}
