@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sample API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/example_endpoint": {
+      "post": {
+        "summary": "Example API Endpoint",
+        "description": "This endpoint demonstrates a POST request with JSON body.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "age": {
+                    "type": "integer"
+                  }
+                }
+                
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components":{
+    "schemas": {
+      "Pet":{
+        "type": "string"
+      }
+    }
+  }
+}
