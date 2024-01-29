@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "payload": {
+        "name": "string",
+        "age": 0
+    },
+    "responseStatusCode": "200",
+    "responseSchema": ""
+}
